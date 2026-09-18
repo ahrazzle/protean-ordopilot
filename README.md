@@ -31,14 +31,14 @@ pytest
 Try the CLI demo against the in-process fake backend (no Hermes needed):
 
 ```sh
-orda doctor
-orda topics
-orda show <slug>
+courier doctor
+courier topics
+courier show <slug>
 ```
 
 ## Architecture
 
-Spec: `leo-architecture.md` (_locked decisions, module map, data contracts, escalation ladder, test matrix — STABLE). Key points: stdlib-first `orda` package; Eldunari holds work state, Orda holds routing projection + delivery ledger; router output is exactly CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE; redaction before any router call; approval gate default-deny on irreversible classes.
+Spec: `leo-architecture.md` (_locked decisions, module map, data contracts, escalation ladder, test matrix — STABLE). Key points: stdlib-first `courier` package; Eldunari holds work state, Orda holds routing projection + delivery ledger; router output is exactly CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE; redaction before any router call; approval gate default-deny on irreversible classes.
 
 Hermes touchpoints (verified in Hermes v0.21.3 source): gateway `pre_gateway_dispatch` hook for intake plus a thin CLI wrapper (`hermes chat --resume <id>`). Dashboard and desktop plugins are real UI surfaces but not the message path.
 

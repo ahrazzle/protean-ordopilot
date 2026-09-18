@@ -6,36 +6,36 @@ never forks it.
 
 ## Module map
 
-- `orda/intake.py` — raw message -> canonical Message (deterministic, no
+- `courier/intake.py` — raw message -> canonical Message (deterministic, no
   model, no payload telemetry).
-- `orda/redact.py` — secret redaction BEFORE any router-model call;
+- `courier/redact.py` — secret redaction BEFORE any router-model call;
   deny-by-default classes from explicit config; strict mode blocks.
-- `orda/topics.py` — layered topic candidates: explicit slug >
+- `courier/topics.py` — layered topic candidates: explicit slug >
   metadata/keyword over slugs + <=500-char summaries; never transcripts.
-- `orda/router.py` — redacted Message + candidates -> RouteDecision, one of
+- `courier/router.py` — redacted Message + candidates -> RouteDecision, one of
   CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE; `RouterModel` interface +
   fixed escalation ladder (router-t1 -> retry -> main-model ->
   clarification), every step recorded.
-- `orda/policy.py` — tier precedence local-configured > free (gated:
+- `courier/policy.py` — tier precedence local-configured > free (gated:
   configured + allowed + verified) > cheap-hosted > main-model; fallback
   recorded, total outage -> ESCALATE.
-- `orda/approvals.py` — irreversible classes (send/publish/spend/delete/
+- `courier/approvals.py` — irreversible classes (send/publish/spend/delete/
   production-write/external-write) -> APPROVAL_REQUIRED, default deny.
-- `orda/catalog.py` — routing projection (single JSON, atomic renames);
+- `courier/catalog.py` — routing projection (single JSON, atomic renames);
   CAS on integer revision; one writer seat per session with TTL, expiry
   takeover + epoch bump, explicit --steal recorded.
-- `orda/ledger.py` — SQLite + JSONL mirror; idempotency key
+- `courier/ledger.py` — SQLite + JSONL mirror; idempotency key
   sha256(canonical_hash + "|" + target); duplicate -> drop-and-ack.
-- `orda/compactor.py` — pointer-based HandoffRecord within 2000 chars,
+- `courier/compactor.py` — pointer-based HandoffRecord within 2000 chars,
   newest-first, truncated flag.
-- `orda/dispatcher.py` — approval gate first, then depth/paused/seat,
+- `courier/dispatcher.py` — approval gate first, then depth/paused/seat,
   ledger idempotency, backend delivery; failures hold/escalate, never force.
-- `orda/adapters/base.py` — SessionBackend protocol (core codes to this).
-- `orda/adapters/local.py` — in-process fake backend + fault injection.
-- `orda/adapters/hermes.py` — thin CLI wrapper (`hermes chat --oneshot
+- `courier/adapters/base.py` — SessionBackend protocol (core codes to this).
+- `courier/adapters/local.py` — in-process fake backend + fault injection.
+- `courier/adapters/hermes.py` — thin CLI wrapper (`hermes chat --oneshot
   --resume <id>`) + `pre_gateway_dispatch` hook shape; honest UNKNOWNs in
   its docstring.
-- `orda/cli.py` — verbs: route | inspect | topics | show | correct |
+- `courier/cli.py` — verbs: route | inspect | topics | show | correct |
   merge | split | pause | resume | forget | approvals | doctor | status.
   Exits 0 ok | 2 usage | 3 conflict | 4 lease | 5 integrity.
 

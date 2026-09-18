@@ -2,8 +2,8 @@
 total outage -> ESCALATE."""
 import pytest
 
-from orda import policy
-from orda.policy import ModelConfig, PolicyExhausted
+from courier import policy
+from courier.policy import ModelConfig, PolicyExhausted
 
 
 def _cfg():

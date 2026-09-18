@@ -29,8 +29,8 @@ imports Hermes internals):
 - UNKNOWN per-channel -> profile binding contract (profile_channels.py
   unread). Multi-profile routing keys are passed through opaquely.
 - UNKNOWN concurrent-resume locking under two writers and exact
-  `assert_resume_safe` rejection conditions. Orda's own seat/CAS still
-  guards Orda-side writes; treat Hermes-side races as escalate+retry.
+  `assert_resume_safe` rejection conditions. Courier's own seat/CAS still
+  guards Courier-side writes; treat Hermes-side races as escalate+retry.
 - UNKNOWN standalone public sessions REST/SDK doc page; the verified
   programmatic path is in-process SessionDB + CLI verbs.
 - UNKNOWN Nous Portal free-model/trial path (subscription-only per docs).
@@ -99,13 +99,13 @@ def pre_gateway_dispatch(event, route_fn=None):
     kind = decision.get("kind")
     if kind == "ESCALATE":
         return {"action": "allow",
-                "orda": {"parked": True,
+                "courier": {"parked": True,
                          "reason": decision.get("reason", "")}}
     if kind in ("CONTINUE", "DIRECT") and decision.get("target_session_id"):
         return {"action": "rewrite", "text": text,
-                "orda": {"resume": decision["target_session_id"],
+                "courier": {"resume": decision["target_session_id"],
                          "kind": kind}}
-    return {"action": "allow", "orda": {"kind": kind}}
+    return {"action": "allow", "courier": {"kind": kind}}
 
 
 def register(ctx):
@@ -116,6 +116,6 @@ def register(ctx):
         register_hook(HOOK_NAME, pre_gateway_dispatch)
     register_cmd = getattr(ctx, "register_cli_command", None)
     if callable(register_cmd):
-        register_cmd("orda-route", "Route a message via Orda",
+        register_cmd("courier-route", "Route a message via Courier",
                      lambda args: {"ok": True})
-    return {"hooks": [HOOK_NAME], "commands": ["orda-route"]}
+    return {"hooks": [HOOK_NAME], "commands": ["courier-route"]}

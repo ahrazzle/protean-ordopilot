@@ -3,13 +3,13 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "orda"
+name = "courier"
 version = "0.1.0"
-description = "Orda session-router core (v0.1 CLI-core MVP)"
+description = "Courier session-router core (v0.1 CLI-core MVP)"
 requires-python = ">=3.9"
 
 [project.scripts]
-orda = "orda.cli:main"
+courier = "courier.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

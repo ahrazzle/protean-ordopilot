@@ -1,7 +1,7 @@
 """2. new-topic: novel message -> NEW with fresh session_id, min context."""
 from tests.conftest import redacted_msg, seed, sessions_of
 
-from orda import router
+from courier import router
 
 
 class TestNewTopic:
@@ -18,7 +18,7 @@ class TestNewTopic:
         assert decision["required_context"] == []
 
     def test_new_materializes_session(self, state):
-        from orda import dispatcher
+        from courier import dispatcher
         seed(state["catalog"], state["backend"], [
             ("refund-policy", "refund policy returns warranty claims process"),
         ])

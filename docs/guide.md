@@ -61,8 +61,8 @@ Orda stops and waits before it would send, post, spend, delete, or change shared
 ## When Orda is off or busy
 
 - If Orda is off, send your request when it is back.
-- If many requests arrive at once, they wait in line. Nothing you sent is lost.
-- You can keep typing while Orda catches up. It takes requests in order.
+- If a request arrives while a run is in flight, it is parked and reported as busy. Send it again.
+- Nothing you sent survives a restart.
 
 ## If something goes wrong
 
@@ -80,4 +80,4 @@ Orda stops and waits before it would send, post, spend, delete, or change shared
 - It will not change shared work on its own.
 - It will not guess when a request could mean two things. It asks.
 - It will not start work until you send the request.
-- It will not keep passwords or card numbers. They are removed before any work begins.
+- It removes API keys, private keys, and tokens before any router-model call. It removes email addresses only when configured to.

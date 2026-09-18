@@ -8,11 +8,11 @@
 
 ## What it is
 
-One input for getting work done. You type what you want in plain words and press send. Orda works out what kind of request it is and handles it, then gives you the result. You do not manage anything. Sends, posts, spends, deletes, and shared-work writes wait for an explicit yes.
+One input for getting work done. You type what you want in plain words and press send. Orda works out what kind of request it is and handles it, then gives you the result. The backend shipped in this repository is a stand-in. It records the request and returns a fixed shape to show the interface rather than to produce model output. A live backend does that work in production. You do not manage anything. Sends, posts, spends, deletes, and shared-work writes wait for an explicit yes.
 
 ## Promise
 
-Type what you want in plain words. Orda reads the request, does the work, and gives you the result. It asks when a request could mean two things, and it never sends, spends, or erases without your yes.
+Type what you want in plain words. Orda reads the request, does the work, and gives you the result. In this repository the result comes from the stand-in. It is a fixed shape that shows where a live model result would appear, not the model output itself. It asks when a request could mean two things, and it never sends, spends, or erases without your yes.
 
 ## Quick start
 

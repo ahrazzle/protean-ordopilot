@@ -1,4 +1,4 @@
-"""python -m orda entrypoint."""
+"""python -m courier entrypoint."""
 from .cli import main
 
 if __name__ == "__main__":

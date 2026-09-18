@@ -2,9 +2,9 @@
 carries no payload substring."""
 import pytest
 
-from orda import intake, redact, router
-from orda.redact import RedactionBlocked, telemetry_record
-from orda.router import StubRouterModel
+from courier import intake, redact, router
+from courier.redact import RedactionBlocked, telemetry_record
+from courier.router import StubRouterModel
 
 SECRETS = {
     "api_key": "sk-abcdefghijklmnop123456",

@@ -1,7 +1,7 @@
 """6. idempotency: same message twice -> duplicate-ack, single side effect."""
 from tests.conftest import redacted_msg, seed, sessions_of
 
-from orda import dispatcher, router
+from courier import dispatcher, router
 
 
 class TestIdempotency:

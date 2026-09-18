@@ -1,4 +1,4 @@
-"""Orda router-core package (v0.1, CLI-core MVP).
+"""Courier router-core package (v0.1, CLI-core MVP).
 
 Routing projection + delivery ledger only. Canonical work state lives in
 Eldunari; this package never forks it.

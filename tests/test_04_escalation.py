@@ -2,8 +2,8 @@
 clarification question."""
 from tests.conftest import redacted_msg, seed, sessions_of
 
-from orda import router
-from orda.router import RouterTimeout, StubRouterModel
+from courier import router
+from courier.router import RouterTimeout, StubRouterModel
 
 
 class TestEscalation:
@@ -48,7 +48,7 @@ class TestEscalation:
         assert "billing-support" in decision["reason"]
 
     def test_depth_overflow_terminal(self, state):
-        from orda import intake, redact
+        from courier import intake, redact
         raw = intake.make_message("anything at all", route_depth=99)
         msg, _ = redact.redact_message(raw)
         decision, steps = router.route_with_escalation(msg, [])

@@ -34,7 +34,7 @@ management with auditable decisions.
 
 ## Implementation (v0.1)
 
-Deterministic rule engine as the default classifier (`orda/router.py`,
-`orda/topics.py`); `RouterModel` interface for a pluggable small model
-(test stub included, no network). Dispatcher (`orda/dispatcher.py`)
+Deterministic rule engine as the default classifier (`courier/router.py`,
+`courier/topics.py`); `RouterModel` interface for a pluggable small model
+(test stub included, no network). Dispatcher (`courier/dispatcher.py`)
 enforces approval gate first, then seat/CAS, ledger idempotency, deliver.

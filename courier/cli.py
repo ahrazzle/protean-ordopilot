@@ -1,4 +1,4 @@
-"""Orda CLI: user-control verbs over the router core.
+"""Courier CLI: user-control verbs over the router core.
 
 Verbs: route | inspect | topics | show | correct | merge | split |
 pause | resume | forget | approvals | doctor | status.
@@ -22,7 +22,7 @@ from .adapters.local import LocalBackend
 from .catalog import ConflictError, SeatError, SessionCatalog
 from .ledger import DeliveryLedger
 
-HOLDER = "orda-cli"
+HOLDER = "courier-cli"
 
 
 # -- state ---------------------------------------------------------------
@@ -33,7 +33,7 @@ class State:
         self.projection = os.path.join(self.home, "routing_projection.json")
         self.sqlite = os.path.join(self.home, "ledger.sqlite")
         self.approvals_path = os.path.join(self.home, "approvals.json")
-        self.config_path = os.path.join(self.home, "orda.config.yaml")
+        self.config_path = os.path.join(self.home, "courier.config.yaml")
 
     def catalog(self):
         return SessionCatalog(self.projection)
@@ -69,9 +69,9 @@ class State:
 
 
 def default_state_home():
-    return os.environ.get("ORDA_STATE_HOME",
+    return os.environ.get("COURIER_STATE_HOME",
                           os.path.join(os.path.expanduser("~"),
-                                       ".hermes", "orda"))
+                                       ".hermes", "courier"))
 
 
 def _load_config_file(path):
@@ -87,7 +87,7 @@ def _load_config_file(path):
 
 
 def _parse_simple_yaml(raw):
-    """Minimal indented-mapping YAML subset for orda.config.yaml
+    """Minimal indented-mapping YAML subset for courier.config.yaml
     (2-space nesting, scalars: bool/float/int/quoted str)."""
     root = {}
     stack = [(-1, root)]
@@ -305,7 +305,7 @@ def verb_approvals(args, st):
                                    "id": args.approve})
         st.save_pending(nxt)
         _emit({"ok": True, "approved": args.approve,
-               "hint": "re-run `orda route` to deliver"})
+               "hint": "re-run `courier route` to deliver"})
         return EXIT_OK
     if args.deny:
         nxt = [p for p in pending if p["id"] != args.deny]
@@ -355,10 +355,10 @@ def verb_status(args, st):
 
 # -- parser ---------------------------------------------------------------
 def build_parser():
-    p = argparse.ArgumentParser(prog="orda",
-                                description="Orda session-router core (v0.1)")
+    p = argparse.ArgumentParser(prog="courier",
+                                description="Courier session-router core (v0.1)")
     p.add_argument("--state-home", default=None,
-                   help="state dir (default: $ORDA_STATE_HOME or ~/.hermes/orda)")
+                   help="state dir (default: $COURIER_STATE_HOME or ~/.hermes/courier)")
     sub = p.add_subparsers(dest="verb", required=True)
 
     r = sub.add_parser("route", help="route (+dispatch) one message")

@@ -10,11 +10,11 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class TestCliPath:
     def run(self, home, *argv):
-        env = dict(os.environ, ORDA_STATE_HOME=home,
+        env = dict(os.environ, COURIER_STATE_HOME=home,
                    PYTHONPATH=REPO + os.pathsep +
                    os.environ.get("PYTHONPATH", ""))
         return subprocess.run(
-            [sys.executable, "-m", "orda", "--state-home", home, *argv],
+            [sys.executable, "-m", "courier", "--state-home", home, *argv],
             cwd=REPO, capture_output=True, text=True, env=env, timeout=60)
 
     def out(self, proc):
@@ -22,7 +22,7 @@ class TestCliPath:
         return json.loads(proc.stdout)
 
     def test_all_verbs(self, tmp_path):
-        from orda.catalog import SessionCatalog
+        from courier.catalog import SessionCatalog
         home = str(tmp_path / "cli-state")
         os.makedirs(home, exist_ok=True)
         cat = SessionCatalog(os.path.join(home, "routing_projection.json"))

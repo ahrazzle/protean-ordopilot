@@ -1,6 +1,6 @@
 """Layered topic identification (simple-first, v0.1 keyword/metadata only).
 
-Layer A: explicit slug (/slug prefix or `orda continue <slug>` verb).
+Layer A: explicit slug (/slug prefix or `courier continue <slug>` verb).
 Layer B: metadata + bounded keyword search over slugs + <=500-char summaries.
 Layer C (applied by router): confidence floor + ambiguous-margin check.
 
@@ -13,7 +13,7 @@ import re
 from . import TOPIC_SEARCH_K
 
 EXPLICIT_RE = re.compile(r"^\s*/([\w][\w\-]*)\b")
-CONTINUE_VERB_RE = re.compile(r"^\s*orda\s+continue\s+([\w][\w\-]*)\b",
+CONTINUE_VERB_RE = re.compile(r"^\s*courier\s+continue\s+([\w][\w\-]*)\b",
                               re.IGNORECASE)
 
 STOPWORDS = frozenset(

@@ -2,7 +2,7 @@
 -> APPROVAL_REQUIRED, default deny, no dispatch."""
 from tests.conftest import redacted_msg, seed, sessions_of
 
-from orda import approvals, dispatcher, router
+from courier import approvals, dispatcher, router
 
 FIXTURES = [
     ("send the contract to legal tonight", "send"),

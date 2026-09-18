@@ -1,4 +1,4 @@
-# Explicit model config for Orda (all tiers opt-in; absent key = disabled).
+# Explicit model config for Courier (all tiers opt-in; absent key = disabled).
 # Thresholds overridable ONLY here — never via environment.
 router:
   provider: custom

@@ -29,14 +29,14 @@ pytest
 Try the CLI demo against the in-process fake backend:
 
 ```sh
-orda doctor
-orda topics
-orda show <slug>
+courier doctor
+courier topics
+courier show <slug>
 ```
 
 ## Architecture
 
-Spec: `docs/architecture.md` (module map, data contracts, escalation ladder, key invariants). Key points: stdlib-first `orda` package; canonical work state lives outside this package; Orda holds the routing projection and the delivery ledger; router output is exactly CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE; redaction before any router call; approval gate default-deny on irreversible classes.
+Spec: `docs/architecture.md` (module map, data contracts, escalation ladder, key invariants). Key points: stdlib-first `courier` package; canonical work state lives outside this package; Orda holds the routing projection and the delivery ledger; router output is exactly CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE; redaction before any router call; approval gate default-deny on irreversible classes.
 
 ## Status (honest)
 

@@ -1,6 +1,6 @@
 """5. handoff-compression: long session -> HandoffRecord <= 2000 chars,
 pointer-only, truncated flag correct."""
-from orda import HANDOFF_BUDGET_CHARS, compactor
+from courier import HANDOFF_BUDGET_CHARS, compactor
 
 
 class TestHandoffCompression:

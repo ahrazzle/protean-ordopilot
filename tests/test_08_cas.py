@@ -3,7 +3,7 @@ import pytest
 
 from tests.conftest import seed
 
-from orda.catalog import ConflictError
+from courier.catalog import ConflictError
 
 
 class TestCasConflict:

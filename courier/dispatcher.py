@@ -24,7 +24,7 @@ def _parse_ts(ts):
         return None
 
 
-def dispatch(message, decision, catalog, ledger, backend, holder="orda",
+def dispatch(message, decision, catalog, ledger, backend, holder="courier",
              record_steps=None):
     """Returns result dict with result in {delivered, duplicate-ack,
     held-for-approval, escalated, parked-busy, parked-clarification}."""

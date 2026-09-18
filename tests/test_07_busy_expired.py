@@ -2,9 +2,9 @@
 live seat + steal is recorded."""
 from tests.conftest import redacted_msg, seed, sessions_of
 
-from orda import dispatcher, router
-from orda.intake import utcnow_rfc3339
-from orda.ledger import idempotency_key
+from courier import dispatcher, router
+from courier.intake import utcnow_rfc3339
+from courier.ledger import idempotency_key
 
 
 class TestBusyExpired:

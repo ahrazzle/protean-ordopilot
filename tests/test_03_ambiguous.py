@@ -1,7 +1,7 @@
 """3. ambiguous: two close topics (margin < 0.10) -> ambiguous bucket."""
 from tests.conftest import redacted_msg, seed, sessions_of
 
-from orda import router
+from courier import router
 
 
 class TestAmbiguous:

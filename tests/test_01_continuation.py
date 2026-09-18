@@ -1,7 +1,7 @@
 """1. continuation: known-topic message -> CONTINUE, right session, >= floor."""
 from tests.conftest import redacted_msg, seed, sessions_of
 
-from orda import ROUTER_CONFIDENCE_FLOOR, dispatcher, router
+from courier import ROUTER_CONFIDENCE_FLOOR, dispatcher, router
 
 
 class TestContinuation:

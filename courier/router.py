@@ -18,7 +18,7 @@ PROVIDER_DETERMINISTIC = "deterministic"
 MODEL_RULE_ENGINE = "rule-engine-v0"
 
 DIRECT_RE = re.compile(
-    r"(?:^|\b)(?:direct\s*:\s*|orda\s+send\s+)([\w][\w\-]*)\b", re.IGNORECASE)
+    r"(?:^|\b)(?:direct\s*:\s*|courier\s+send\s+)([\w][\w\-]*)\b", re.IGNORECASE)
 HANDOFF_RE = re.compile(
     r"\b(?:handoff\s+to|move\s+(?:this|it|that)\s+to)\s+([\w][\w\-]*)\b",
     re.IGNORECASE)

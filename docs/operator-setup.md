@@ -4,7 +4,7 @@ Audience: technical operators. For the non-technical guide, see `docs/guide.md`.
 
 ## What v0.1 is
 
-CLI-core only: intake → redact → router → dispatcher → catalog projection → ledger → approvals → compactor → policy → CLI verbs. Stdlib-first Python package `orda`. No ORM. No web framework in core.
+CLI-core only: intake → redact → router → dispatcher → catalog projection → ledger → approvals → compactor → policy → CLI verbs. Stdlib-first Python package `courier`. No ORM. No web framework in core.
 
 Work state is never owned here. Eldunari `~/.hermes/eldunari/nexus/state/orda/` is the only work-state store (`events.jsonl` truth, `state.json` materialization, seat lease, CAS). Orda owns a routing projection plus a delivery ledger only.
 
@@ -18,14 +18,14 @@ Prerequisites: Python 3 with stdlib `sqlite3`. No required third-party deps. The
 git clone <repo-url>
 cd protean-ordapilot
 pip install -e .
-orda doctor
+courier doctor
 ```
 
-`orda doctor` pings each configured tier and prints the resolved chain, plus seat and ledger health. Fix failures before routing live traffic.
+`courier doctor` pings each configured tier and prints the resolved chain, plus seat and ledger health. Fix failures before routing live traffic.
 
 No local servers are started for you. If you want a local tier (Ollama, LM Studio, llama.cpp-family), install and serve it yourself, then point config at it. Orda never auto-starts it.
 
-## Config (`orda.config.yaml`)
+## Config (`courier.config.yaml`)
 
 All routing and model choices are explicit config. Absent key means the feature is disabled, never silently defaulted. Environment sniffing is not used.
 
@@ -53,7 +53,7 @@ confidence_floor: 0.65
 
 ### Router model policy (precedence, fixed)
 
-1. `local-configured` — provider/model you pinned in `orda.config.yaml`.
+1. `local-configured` — provider/model you pinned in `courier.config.yaml`.
 2. `verified-free` — only if `free_tier_allowed: true` AND the free path was verified at startup against live docs/source. Default OFF. Do not promise a free path you have not verified.
 3. `cheap-hosted` — config-listed cheap tier.
 4. `main-model` — fallback, always available.
@@ -79,19 +79,19 @@ Approval gate: irreversible classes (send/publish/spend/delete/production-write/
 Exit codes: 0 ok | 2 usage | 3 conflict | 4 lease | 5 integrity.
 
 ```
-orda route <text>
-orda inspect <message-id>
-orda topics
-orda show <slug>
-orda correct <message-id> --to <slug>
-orda merge <slug-a> <slug-b> --into <slug>
-orda split <slug> --at <message-id> --new <slug>
-orda pause <slug>
-orda resume <slug>
-orda forget <slug> [--drop-ledger]
-orda approvals
-orda doctor
-orda status
+courier route <text>
+courier inspect <message-id>
+courier topics
+courier show <slug>
+courier correct <message-id> --to <slug>
+courier merge <slug-a> <slug-b> --into <slug>
+courier split <slug> --at <message-id> --new <slug>
+courier pause <slug>
+courier resume <slug>
+courier forget <slug> [--drop-ledger]
+courier approvals
+courier doctor
+courier status
 ```
 
 Notes: `correct` re-routes plus a ledger amend event. `merge` is CAS-guarded and records a merge event. `split` creates a session behind the scenes. `pause` holds new messages for the topic into the clarification park. `forget` removes the projection entry; ledger rows are anonymized unless `--drop-ledger` with explicit confirm. Router output is exactly one of `CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE` with fields `kind, target, reason, confidence, required_context, provider, model`.

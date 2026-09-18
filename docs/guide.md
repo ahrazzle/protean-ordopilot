@@ -72,7 +72,6 @@ Orda stops and waits before it would send, post, spend, delete, or change shared
 | The result is not what you wanted | Say what to change in one line. Try Shorter. Warmer. Only the dates. |
 | Orda asks a question first | Answer it. It is checking what you meant. |
 | Nothing seems to happen | Orda may be waiting for your yes. Look at what it holds, then allow or refuse. |
-| The result stops partway | Ask for the rest. What you have is kept. |
 
 ## What Orda will not do
 

@@ -4,7 +4,7 @@ Orda is one input for getting work done with AI. You type what you want in plain
 
 ## What is in this repository
 
-This repository holds the interface and a stand-in backend. The stand-in records your request. It returns a fixed shape. It shows how the interface works. It does not produce model output. A live backend does that in production. Any sample text below is what the stand-in returns.
+This repository holds the interface and a stand-in backend. The stand-in records your request and returns an acknowledgement with a session id. It writes no text. Live production uses a real backend.
 
 ## How to use it
 
@@ -16,39 +16,43 @@ You do not set anything up. You describe the job. A short request is fine. A lon
 
 ## Four things you can ask for
 
-Each case shows a request shape. It also shows the kind of result the interface provides.
+Each case shows the request shape only.
 
 ### A messy document, made into a clean summary
 
-A supplier sends a long update. Some parts matter and some do not. You type:
+A supplier sends a long update. Only some parts matter. You type:
 
 > Here is my supplier's update. Give me a short summary I can read in a minute.
 
-Then you paste the update. Stand-in result: a short summary in plain sentences. Points are in order. Urgent points come first.
+Then you paste it.
+
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
 ### A reply to a difficult message
 
-A customer is angry about a late delivery. You want to answer. You type:
+A customer is angry about a late delivery. You type:
 
 > A customer is upset that their order arrived late. Write a short reply that offers a refund and a small discount.
 
-Stand-in result: a short polite reply you could send as is. With a live backend it is real text. With the stand-in it is a fixed placeholder.
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
 ### Decisions and dates from a long chain
 
-You have many messages about one project. You lost track of what was agreed. You type:
+You have many messages about one project and lost track of what was agreed. You type:
 
 > Here is a long email chain about the shop move. List every decision we made and every date we agreed.
 
-Stand-in result: a short list. Each decision is one line. Each date sits next to the name that gave it.
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
 ### A rough piece of writing, reworked
 
-You wrote something in a hurry. It does not read well. You type:
+You wrote something in a hurry. You type:
 
 > Rewrite this so it is clear and friendly, and keep it short.
 
-Then you paste what you wrote. Stand-in result: the same meaning in cleaner sentences. It is no longer than before.
+Then you paste it.
+
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
 ## What Orda asks you first
 

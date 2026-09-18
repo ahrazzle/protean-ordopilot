@@ -2,23 +2,21 @@
 
 ## Names
 
-- **Orda** — the product name users see. A quiet sorter for daily notes.
-- **Ordapilot** — the internal implementation name (play on autopilot). The package and build work carry this name.
-- **Protean / Proteus** — the underlying team system. Proteus adjudicates locked-decision changes and integrates lane work into the repo.
+- **Orda** — the product name users see. One plain input for getting work done with AI.
 
 ## What it is
 
-Orda files each incoming note under the right project thread. It keeps one notebook per project. It carries short notes forward, not full transcripts. Sends, posts, spends, deletes, and shared-work writes wait for an explicit yes.
+One input for getting work done. You type what you want in plain words and press send. Orda works out what kind of request it is and handles it, then gives you the result. The backend shipped in this repository is a stand-in. It records the request and returns a fixed shape to show the interface rather than to produce model output. A live backend does that work in production. You do not manage anything. Sends, posts, spends, deletes, and shared-work writes wait for an explicit yes.
 
 ## Promise
 
-You send notes in plain words. Orda files each one, recalls the gist without dragging the past along, asks when unsure, and never sends, spends, or erases without your yes.
+Type what you want in plain words. Orda reads the request, does the work, and gives you the result. In this repository the result comes from the stand-in. It is a fixed shape that shows where a live model result would appear, not the model output itself. It asks when a request could mean two things, and it never sends, spends, or erases without your yes.
 
 ## Quick start
 
 ```sh
 git clone <repo-url>
-cd protean-ordopilot
+cd orda
 pip install -e .
 ```
 
@@ -28,7 +26,7 @@ Run the checks (12 test classes: continuation, new-topic, ambiguous, escalation,
 pytest
 ```
 
-Try the CLI demo against the in-process fake backend (no Hermes needed):
+Try the CLI demo against the in-process fake backend:
 
 ```sh
 courier doctor
@@ -38,9 +36,7 @@ courier show <slug>
 
 ## Architecture
 
-Spec: `leo-architecture.md` (_locked decisions, module map, data contracts, escalation ladder, test matrix — STABLE). Key points: stdlib-first `courier` package; Eldunari holds work state, Orda holds routing projection + delivery ledger; router output is exactly CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE; redaction before any router call; approval gate default-deny on irreversible classes.
-
-Hermes touchpoints (verified in Hermes v0.21.3 source): gateway `pre_gateway_dispatch` hook for intake plus a thin CLI wrapper (`hermes chat --resume <id>`). Dashboard and desktop plugins are real UI surfaces but not the message path.
+Spec: `docs/architecture.md` (module map, data contracts, escalation ladder, key invariants). Key points: stdlib-first `courier` package; canonical work state lives outside this package; Orda holds the routing projection and the delivery ledger; router output is exactly CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE; redaction before any router call; approval gate default-deny on irreversible classes.
 
 ## Status (honest)
 

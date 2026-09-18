@@ -1,102 +1,82 @@
-# Orda: A Quiet Helper for Your Notes
+# Orda: A Plain-Language Guide
 
-Orda sorts the notes you send through the day. You write in plain words, and
-each note goes where it belongs.
+Orda is one input for getting work done with AI. You type what you want in plain words. You press send. One result comes back. One box for input. The backend does the work.
 
-## What Orda does for you
+## What is in this repository
 
-You send short notes. Orda reads each one and sorts it into the right topic.
-Each topic has its own notebook. A list stays a list. A conversation stays
-together. Tomorrow you keep sending. You never explain the same job twice.
+This repository holds the interface and a stand-in backend. The stand-in records your request and returns an acknowledgement with a session id. It writes no text. Live production uses a real backend.
 
-## Start in three steps
+## How to use it
 
-1. Open Orda where you already type messages.
-2. Write a note in your own words and send it.
-3. Read the reply. If Orda asks which notebook, pick one.
+1. Open Orda.
+2. Type what you want in your own words.
+3. Press send and read what comes back.
 
-That is the whole habit. A short note is fine. A long note is fine. A note
-about more than one thing is fine too.
+You do not set anything up. You describe the job. A short request is fine. A long request is fine. A request can have more than one part.
 
-## Three worked examples
+## Four things you can ask for
 
-### 1. Keeping a list up to date
+Each case shows the request shape only.
 
-You run a corner store. You already asked Orda to keep your stock list.
+### A messy document, made into a clean summary
 
-You type:
+A supplier sends a long update. Only some parts matter. You type:
 
-> Milk low, eggs low, bread low. Order by Thursday.
+> Here is my supplier's update. Give me a short summary I can read in a minute.
 
-Orda files it in your Store stock notebook, the same one as yesterday. The
-list updates. You did not repeat the job.
+Then you paste it.
 
-### 2. When one note covers two things
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
-You type:
+### A reply to a difficult message
 
-> Mina can cover till 2 on Saturday, and order more milk if we run low.
+A customer is angry about a late delivery. You type:
 
-Orda sees two topics in one note. It does not guess. It asks:
+> A customer is upset that their order arrived late. Write a short reply that offers a refund and a small discount.
 
-> Two topics in one note. Which notebook?
-> 1. Store staff (Saturday cover)
-> 2. Store stock (milk order)
-> Reply 1, 2, or both.
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
-You reply "both". Orda files each part in its own notebook.
+### Decisions and dates from a long chain
 
-### 3. When it files something wrong, and when it waits
+You have many messages about one project and lost track of what was agreed. You type:
 
-You type:
+> Here is a long email chain about the shop move. List every decision we made and every date we agreed.
 
-> Draft a kind reply to the review about the long queue on Tuesday.
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
-Orda files it under Home chores. That is wrong.
+### A rough piece of writing, reworked
 
-You say: "Wrong place. That belongs with the store notes."
+You wrote something in a hurry. You type:
 
-Orda moves it and marks the earlier mistake. Then it tells you the draft is
-ready. The draft will not go out until you say yes.
+> Rewrite this so it is clear and friendly, and keep it short.
 
-## What Orda asks your permission for
+Then you paste it.
 
-Before any of these, Orda stops and waits for you:
+Shape only, no text. The shipped backend records the request and returns an acknowledgement. Result wording only shows where a live result would appear.
 
-- Sending a message to someone.
-- Posting anything in public.
-- Spending money.
-- Deleting something.
-- Changing work that others share.
+## What Orda asks you first
 
-For these, no is the default. Orda shows you the exact action and waits. A
-draft stays a draft until you approve it.
+Orda stops and waits before it would send, post, spend, delete, or change shared work. The answer starts as no. Orda shows what it will do and waits. Nothing goes out until you say yes.
 
-## When the computer is off or busy
+## When Orda is off or busy
 
-- If the machine is off, Orda cannot read new notes. Send them when it is
-  back, and it catches up.
-- If notes arrive faster than Orda can sort them, they wait their turn.
-  Nothing you already sent is lost.
-- You can keep sending while it catches up. Orda works through your notes in
-  order.
+- If Orda is off, send your request when it is back.
+- If a request arrives while a run is in flight, it is parked and reported as busy. Send it again.
+- Nothing you sent survives a restart.
 
 ## If something goes wrong
 
 | What you see | What to do |
 |---|---|
-| A note landed in the wrong notebook | Say so in one line. Name the right notebook. Orda moves it. |
-| Orda asks which notebook and you are unsure | Pick either one. You can move it later. Nothing is stuck. |
-| You never got a reply | Orda may be waiting for your yes. Check what is waiting, then allow or deny it. |
-| A note did not appear at all | Send it again. Sending a note twice is harmless. |
-| A draft is still sitting there | Orda will not send it on its own. Say yes when you are ready. |
+| You never see a result | Send the request again. Asking twice is harmless. |
+| The result is not what you wanted | Say what to change in one line. Try Shorter. Warmer. Only the dates. |
+| Orda asks a question first | Answer it. It is checking what you meant. |
+| Nothing seems to happen | Orda may be waiting for your yes. Look at what it holds, then allow or refuse. |
 
 ## What Orda will not do
 
-- It will not send, post, spend, or delete anything without your yes.
-- It will not change work that others share on its own.
-- It will not guess when two notebooks both fit. It asks.
-- It will not keep your whole past. It keeps the gist.
-- It will not start programs on your computer.
-- It will not keep your secrets. Passwords and card numbers are taken out of
-  your note.
+- It will not send, post, spend, or delete without your yes.
+- It will not change shared work on its own.
+- It will not guess when a request could mean two things. It asks.
+- It will not start work until you send the request.
+- It removes API keys, private keys, and tokens before any router-model call. It removes email addresses only when configured to.

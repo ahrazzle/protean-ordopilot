@@ -1,198 +1,102 @@
-# Orda: Your Work Runs in the Background
+# Orda: A Quiet Helper for Your Notes
 
-Orda keeps track of your ongoing work. You just send notes. Orda files each one in the right place.
+Orda sorts the notes you send through the day. You write in plain words, and
+each note goes where it belongs.
 
-Think of a helper behind the counter. You speak. It sorts. You keep working.
+## What Orda does for you
 
-## What Orda is
+You send short notes. Orda reads each one and sorts it into the right topic.
+Each topic has its own notebook. A list stays a list. A conversation stays
+together. Tomorrow you keep sending. You never explain the same job twice.
 
-Orda is a Quiet sorter for your daily notes.
+## Start in three steps
 
-You send it short notes through the day. It files each note under the right project. It keeps one notebook per project.
+1. Open Orda where you already type messages.
+2. Write a note in your own words and send it.
+3. Read the reply. If Orda asks which notebook, pick one.
 
-You never sort threads by hand. You never copy old notes forward. Orda does that part.
+That is the whole habit. A short note is fine. A long note is fine. A note
+about more than one thing is fine too.
 
-## What you do
+## Three worked examples
 
-You do one thing: send notes.
+### 1. Keeping a list up to date
 
-Type plain words. Short is fine. Long is fine. One topic or two.
+You run a corner store. You already asked Orda to keep your stock list.
 
-> Milk low. Bread low. Order by Thursday.
-> Draft a kind reply to the rude review from Tuesday.
-> Remind me at 6 pm to lock the back door.
-
-That is all. Orda reads each note and files it.
-
-## How Orda files your notes
-
-It keeps one notebook per project. Each notebook has a short label, like `store` or `home-fix` or `school-trip`.
-
-A new note lands in one of two ways:
-
-- It continues a notebook you already have. Same topic, same notebook.
-- It starts a new notebook. New topic, new notebook.
-
-Orda picks by reading the words and the short labels. If your note names a label straight out, that wins. If not, Orda compares words in your note with the short summary on each notebook.
-
-If Orda is not sure, it asks you. It never guesses on your behalf. It parks the note and shows you the two closest labels. You pick.
-
-## How Orda recalls without keeping everything
-
-Orda keeps short notes, not full copies.
-
-Each notebook holds a brief summary. Five hundred letters at most. Not the whole past. Just the gist: what the project is, what is still open, what comes next.
-
-When one notebook needs a fact from another, Orda passes a short slip. Two thousand letters at most. Newest facts first. Old facts drop off first. The slip says when bits were cut.
-
-So old notes stay where they were. Orda carries the gist forward, not the pile.
-
-## Fix it when it files wrong
-
-Orda files wrong at times. Fix it with one line:
-
-```
-orda correct <note-id> --to <label>
-```
-
-Find your note's ID and the right label first:
-
-```
-orda topics
-orda show <label>
-```
-
-`orda topics` lists each label with a one-line summary. `orda show <label>` shows that notebook's state and recent picks.
-
-Your fix is kept on record. The note moves. The wrong file is marked.
-
-Two notebooks on the same thing? Join them:
-
-```
-orda merge <label-a> <label-b> --into <label>
-```
-
-One notebook that should be two? Cut it at a note:
-
-```
-orda split <label> --at <note-id> --new <label>
-```
-
-Need quiet for a while? Hold new notes for one label, then let them flow again:
-
-```
-orda pause <label>
-orda resume <label>
-```
-
-## Examples from real days
-
-### Home
-
-> The tap in the back bath still drips. Call the plumber Friday.
-> Add soup, rice, and soap to the shop list.
-
-First note goes to the `home-fix` notebook. Next note starts or joins the shop list. Two notes, two right places.
-
-### Work
-
-> Move the client call to 3 pm. Send them the new dates.
-> The deck for Monday is done. Check my spelling.
-
-Orda files the call note with the client thread. It files the deck note with the Monday work. You check the draft before it goes out. See the safety part below.
-
-### Business
-
-> Send quotes to the two new leads by noon.
-> Pay the power bill before the late fee hits.
-
-Quotes go to sales. The bill goes to bills. Anything that spends or sends waits for your yes first.
-
-### Chores
-
-> Remind me to take the bins out Tuesday night.
-> The porch light is out. Buy a bulb.
-
-Bins go to the home-chore thread. The bulb joins the shop list or the fix list. Small notes, filed away.
-
-### Research
-
-> Find three reviews of quiet fans. Under $100. Low power use.
-> How does the school grant form work? List the steps.
-
-Reviews go to the fan research thread. The grant form starts a new thread or joins school work. Old findings stay in their notebooks. New notes add to them.
-
-### Convenience store: a full day
-
-You run a corner store. Here is Orda through your day.
-
-**Stock reminders.** Morning. You type:
+You type:
 
 > Milk low, eggs low, bread low. Order by Thursday.
 
-Orda files this in your `store-stock` notebook. It adds to the same list as yesterday. One list, always current.
+Orda files it in your Store stock notebook, the same one as yesterday. The
+list updates. You did not repeat the job.
 
-**Supplier comparisons.** Midday. A new rep drops a price sheet. You type:
+### 2. When one note covers two things
 
-> New rep from FreshLine. Milk 10 cents cheaper. Eggs 5 cents dearer. Worth a switch?
+You type:
 
-This is a new question. Orda starts a `store-supplier` thread or adds to past supplier notes. Old price notes stay on file. The new sheet sits next to them. You see both, side by side.
+> Mina can cover till 2 on Saturday, and order more milk if we run low.
 
-**Customer-note drafts.** Afternoon. A bad review stings. You type:
+Orda sees two topics in one note. It does not guess. It asks:
 
-> Draft a kind reply to the review about the long queue on Tuesday. Say sorry. Say what we will fix.
+> Two topics in one note. Which notebook?
+> 1. Store staff (Saturday cover)
+> 2. Store stock (milk order)
+> Reply 1, 2, or both.
 
-Orda drafts the reply in your `store-notes` thread. The draft waits. You read it. You say yes. Only then does it go out. Nothing rude goes out in heat.
+You reply "both". Orda files each part in its own notebook.
 
-**Staff plans.** Evening. Cover for Saturday is thin. You type:
+### 3. When it files something wrong, and when it waits
 
-> Ali wants Saturday off. Mina can cover till 2. Who covers after 2?
+You type:
 
-Orda files this in your `store-staff` thread. Past rota notes stay there. The gap stands out. You fill it.
+> Draft a kind reply to the review about the long queue on Tuesday.
 
-**Daily tasks.** Close. Same jobs each night. You type:
+Orda files it under Home chores. That is wrong.
 
-> Close list: bins out, shutters half, fridge temps, cash count.
+You say: "Wrong place. That belongs with the store notes."
 
-Orda keeps this as a daily round in your `store-close` thread. Each night adds a tick. Miss a step and the list shows it.
+Orda moves it and marks the earlier mistake. Then it tells you the draft is
+ready. The draft will not go out until you say yes.
 
-Five jobs. Five notebooks. One stream of notes from you.
+## What Orda asks your permission for
 
-## Safety: your yes comes first
+Before any of these, Orda stops and waits for you:
 
-Some acts cannot be undone. Orda knows the list: sending, posting, spending, erasing, changing shared work.
+- Sending a message to someone.
+- Posting anything in public.
+- Spending money.
+- Deleting something.
+- Changing work that others share.
 
-For these, Orda always stops and asks. No is the default. Nothing moves till you say yes in plain words.
+For these, no is the default. Orda shows you the exact action and waits. A
+draft stays a draft until you approve it.
 
-See what waits for your yes:
+## When the computer is off or busy
 
-```
-orda approvals
-```
+- If the machine is off, Orda cannot read new notes. Send them when it is
+  back, and it catches up.
+- If notes arrive faster than Orda can sort them, they wait their turn.
+  Nothing you already sent is lost.
+- You can keep sending while it catches up. Orda works through your notes in
+  order.
 
-Each item shows what it wants to do and why. You allow it or you deny it. No quiet sends. No quiet spends.
+## If something goes wrong
 
-## Privacy: private bits are stripped first
-
-Keys, tokens, and secret codes are scrubbed before any helper sees your note. Orda swaps each one for a tag like `[REDACTED:key]`. It counts what it scrubbed.
-
-Strict shops can set a hard rule: if a note holds a secret, Orda will not pass it on at all. It holds the note and tells you.
-
-Orda's own logs keep counts and picks only. Never your words. Never your secrets.
+| What you see | What to do |
+|---|---|
+| A note landed in the wrong notebook | Say so in one line. Name the right notebook. Orda moves it. |
+| Orda asks which notebook and you are unsure | Pick either one. You can move it later. Nothing is stuck. |
+| You never got a reply | Orda may be waiting for your yes. Check what is waiting, then allow or deny it. |
+| A note did not appear at all | Send it again. Sending a note twice is harmless. |
+| A draft is still sitting there | Orda will not send it on its own. Say yes when you are ready. |
 
 ## What Orda will not do
 
-- It will not send, post, spend, erase, or change shared work without your yes.
-- It will not guess when two notebooks fit. It will ask.
-- It will not drag your whole past along. Short notes only.
-- It will not start secret local services on your machine. If you want a helper that runs on your own box, you set that up and name it in the config. Orda never starts it for you.
-
-## Quick start for the non-technical reader
-
-1. Open Orda where you normally type notes.
-2. Send a note in plain words.
-3. If Orda asks which notebook, pick one.
-4. If Orda files wrong, run the one-line fix above.
-5. If Orda waits for a yes, check `orda approvals`.
-
-That is the whole job. You send notes. Orda keeps the notebooks.
+- It will not send, post, spend, or delete anything without your yes.
+- It will not change work that others share on its own.
+- It will not guess when two notebooks both fit. It asks.
+- It will not keep your whole past. It keeps the gist.
+- It will not start programs on your computer.
+- It will not keep your secrets. Passwords and card numbers are taken out of
+  your note.

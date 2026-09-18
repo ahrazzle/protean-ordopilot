@@ -2,17 +2,17 @@
 
 ## Names
 
-- **Orda** — the product name users see. A quiet sorter for daily notes.
+- **Orda** — the product name users see. One plain input for getting work done with AI.
 - **Ordapilot** — the internal implementation name (play on autopilot). The package and build work carry this name.
 - **Protean / Proteus** — the underlying team system. Proteus adjudicates locked-decision changes and integrates lane work into the repo.
 
 ## What it is
 
-Orda files each incoming note under the right project thread. It keeps one notebook per project. It carries short notes forward, not full transcripts. Sends, posts, spends, deletes, and shared-work writes wait for an explicit yes.
+One input for getting work done. You type what you want in plain words and press send. Orda works out what kind of request it is and handles it, then gives you the result. You do not manage anything. Sends, posts, spends, deletes, and shared-work writes wait for an explicit yes.
 
 ## Promise
 
-You send notes in plain words. Orda files each one, recalls the gist without dragging the past along, asks when unsure, and never sends, spends, or erases without your yes.
+Type what you want in plain words. Orda reads the request, does the work, and gives you the result. It asks when a request could mean two things, and it never sends, spends, or erases without your yes.
 
 ## Quick start
 

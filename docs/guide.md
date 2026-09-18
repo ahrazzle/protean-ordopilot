@@ -1,102 +1,117 @@
-# Orda: A Quiet Helper for Your Notes
+# Orda: A Plain-Language Guide
 
-Orda sorts the notes you send through the day. You write in plain words, and
-each note goes where it belongs.
+Orda is one input for getting work done with AI. You type what you want in
+plain words, press send, and the result comes back to you.
 
-## What Orda does for you
+## How to use it
 
-You send short notes. Orda reads each one and sorts it into the right topic.
-Each topic has its own notebook. A list stays a list. A conversation stays
-together. Tomorrow you keep sending. You never explain the same job twice.
+1. Open Orda.
+2. Type what you want in your own words.
+3. Press send, and read what comes back.
 
-## Start in three steps
+You do not set anything up, and you do not manage anything. You describe the
+job, and Orda handles the rest. A short request is fine. A long request is
+fine. A request that asks for more than one thing is fine too.
 
-1. Open Orda where you already type messages.
-2. Write a note in your own words and send it.
-3. Read the reply. If Orda asks which notebook, pick one.
+## Four things you can ask for
 
-That is the whole habit. A short note is fine. A long note is fine. A note
-about more than one thing is fine too.
+### A messy document, made into a clean summary
 
-## Three worked examples
-
-### 1. Keeping a list up to date
-
-You run a corner store. You already asked Orda to keep your stock list.
+A supplier sends a long, jumbled update. Some of it matters and some of it
+does not.
 
 You type:
 
-> Milk low, eggs low, bread low. Order by Thursday.
+> Here is my supplier's update. Give me a short summary I can read in a minute.
 
-Orda files it in your Store stock notebook, the same one as yesterday. The
-list updates. You did not repeat the job.
+Then you paste the update underneath.
 
-### 2. When one note covers two things
+What comes back: a short summary in plain sentences. The points are in order,
+and anything urgent sits at the top.
 
-You type:
+What you can do next: copy the summary into an email, or ask Orda to make it
+shorter.
 
-> Mina can cover till 2 on Saturday, and order more milk if we run low.
+### A reply to a difficult message
 
-Orda sees two topics in one note. It does not guess. It asks:
-
-> Two topics in one note. Which notebook?
-> 1. Store staff (Saturday cover)
-> 2. Store stock (milk order)
-> Reply 1, 2, or both.
-
-You reply "both". Orda files each part in its own notebook.
-
-### 3. When it files something wrong, and when it waits
+A customer is angry about a late delivery. You want to answer without making
+things worse.
 
 You type:
 
-> Draft a kind reply to the review about the long queue on Tuesday.
+> A customer is upset that their order arrived late. Write a short reply that apologises, says we will refund the delivery charge, and offers a small discount on the next order.
 
-Orda files it under Home chores. That is wrong.
+What comes back: a short, polite reply you can send as it is.
 
-You say: "Wrong place. That belongs with the store notes."
+What you can do next: ask for a warmer or a shorter version, or change a line
+yourself.
 
-Orda moves it and marks the earlier mistake. Then it tells you the draft is
-ready. The draft will not go out until you say yes.
+### Decisions and dates pulled out of a long email chain
 
-## What Orda asks your permission for
+You have fifty messages about one project and you have lost track of what was
+agreed.
 
-Before any of these, Orda stops and waits for you:
+You type:
+
+> Here is a long email chain about the shop move. List every decision we made and every date we agreed.
+
+What comes back: a short list. Each decision is one line, and each date sits
+next to the person who gave it.
+
+What you can do next: ask Orda to mark which items are done and which are
+still open, or to turn a date into a reminder.
+
+### A rough piece of writing, reworked
+
+You wrote something in a hurry and it does not read well.
+
+You type:
+
+> Rewrite this so it is clear and friendly, and keep it short.
+
+Then you paste what you wrote.
+
+What comes back: the same meaning in cleaner sentences, and no longer than
+before.
+
+What you can do next: ask for a different tone, or ask for one more pass.
+
+## What Orda asks you first
+
+Before it does any of these, Orda stops and waits for you:
 
 - Sending a message to someone.
 - Posting anything in public.
 - Spending money.
 - Deleting something.
-- Changing work that others share.
+- Changing work that other people share.
 
-For these, no is the default. Orda shows you the exact action and waits. A
-draft stays a draft until you approve it.
+For all of these, the answer starts as no. Orda shows you exactly what it
+will do and then waits. Nothing goes out until you say yes.
 
-## When the computer is off or busy
+## When Orda is off or busy
 
-- If the machine is off, Orda cannot read new notes. Send them when it is
-  back, and it catches up.
-- If notes arrive faster than Orda can sort them, they wait their turn.
-  Nothing you already sent is lost.
-- You can keep sending while it catches up. Orda works through your notes in
-  order.
+- If Orda is off, send your request when it is back.
+- If many requests arrive at once, they wait their turn. Nothing you already
+  sent is lost.
+- You can keep typing while Orda catches up. It takes requests in the order
+  they arrive.
 
 ## If something goes wrong
 
 | What you see | What to do |
 |---|---|
-| A note landed in the wrong notebook | Say so in one line. Name the right notebook. Orda moves it. |
-| Orda asks which notebook and you are unsure | Pick either one. You can move it later. Nothing is stuck. |
-| You never got a reply | Orda may be waiting for your yes. Check what is waiting, then allow or deny it. |
-| A note did not appear at all | Send it again. Sending a note twice is harmless. |
-| A draft is still sitting there | Orda will not send it on its own. Say yes when you are ready. |
+| You never see a result | Send the request again. Asking twice is harmless. |
+| The result is not what you wanted | Say what to change in one line. "Shorter." "Warmer." "Only the dates." |
+| Orda asks a question before it starts | Answer it. It is checking what you meant. |
+| Nothing seems to happen | Orda may be waiting for your yes. Look at what it is holding, then allow it or refuse it. |
+| The result stops partway | Ask for the rest. What you already have is kept. |
 
 ## What Orda will not do
 
 - It will not send, post, spend, or delete anything without your yes.
-- It will not change work that others share on its own.
-- It will not guess when two notebooks both fit. It asks.
-- It will not keep your whole past. It keeps the gist.
-- It will not start programs on your computer.
-- It will not keep your secrets. Passwords and card numbers are taken out of
-  your note.
+- It will not change work that other people share on its own.
+- It will not guess when your request could mean two things. It asks.
+- It will not start work until you send the request.
+- It will not keep your passwords or card numbers. They are taken out before
+  any work begins.

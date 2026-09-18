@@ -30,38 +30,25 @@ No local servers are started for you. If you want a local tier (Ollama, LM Studi
 All routing and model choices are explicit config. Absent key means the feature is disabled, never silently defaulted. Environment sniffing is not used.
 
 ```yaml
-router_tier:
+router:
   provider: "<router-provider>"
   model: "<router-model>"
-main_tier:
+main:
   provider: "<main-provider>"
   model: "<main-model>"
+# local:                        # optional; only when YOU run the server
+#   provider: custom
+#   model: "<local-tag>"
+# cheap:                        # optional second cheap tier
+#   provider: "<cheap-provider>"
+#   model: "<cheap-model>"
+# free:                         # verified-free path only; see policy below
+#   provider: "<free-provider>"
+#   model: "<free-model>"
 free_tier_allowed: false   # default OFF; verified-free path only when true AND verified
-
-timeouts:
-  router_timeout_s: 8.0
-  confidence_floor: 0.65
-  ambiguous_margin: 0.10
-  max_route_depth: 4
-
-budgets:
-  handoff_budget_chars: 2000
-  session_summary_budget_chars: 500
-  topic_search_k: 5
-  seat_ttl_s: 600
-
-paths:
-  ledger: "<profile>/orda/ledger.sqlite"        # plus ledger.jsonl mirror
-  projection: "<profile>/orda/routing_projection.json"
-
-redaction:
-  redact_emails: false        # default false; plain emails pass
-  strict: false               # when true, any deny-class match blocks the router call
-  extra_patterns: []          # list of RE2 patterns
-
-local_tier:                   # optional; only when YOU run the server
-  base_url: "http://localhost:11434/v1"   # Ollama example; LM Studio / llama.cpp similar
-  # Orda dials this URL. It never launches the server behind it.
+free_verified: false        # set true only after verifying the free path against live docs/source
+timeout_s: 8.0
+confidence_floor: 0.65
 ```
 
 ### Router model policy (precedence, fixed)
@@ -92,6 +79,8 @@ Approval gate: irreversible classes (send/publish/spend/delete/production-write/
 Exit codes: 0 ok | 2 usage | 3 conflict | 4 lease | 5 integrity.
 
 ```
+orda route <text>
+orda inspect <message-id>
 orda topics
 orda show <slug>
 orda correct <message-id> --to <slug>
@@ -102,6 +91,7 @@ orda resume <slug>
 orda forget <slug> [--drop-ledger]
 orda approvals
 orda doctor
+orda status
 ```
 
 Notes: `correct` re-routes plus a ledger amend event. `merge` is CAS-guarded and records a merge event. `split` creates a session behind the scenes. `pause` holds new messages for the topic into the clarification park. `forget` removes the projection entry; ledger rows are anonymized unless `--drop-ledger` with explicit confirm. Router output is exactly one of `CONTINUE | NEW | DIRECT | HANDOFF | ESCALATE` with fields `kind, target, reason, confidence, required_context, provider, model`.
@@ -140,3 +130,5 @@ Gateway middleware is NOT applicable (only tool/llm kinds; no inbound-message ki
 - Loop prevention: `route_depth` per message chain, max 4; overflow forces `ESCALATE` with reason `route-depth-overflow`.
 - Delivery ledger: JSONL + SQLite, idempotency key `sha256(canonical_message_hash + "|" + target_session_id)`; duplicate key means drop-and-ack, never redeliver. Payload column holds the canonical hash only, never text.
 - Catalog writes use CAS on integer `revision`; stale `expected_rev` means exit 3, one retry, then escalate — never silent overwrite. One writer seat per session; busy seats park, expired seats allow takeover with epoch bump, live seats refuse unless explicit `--steal` (recorded).
+
+STABLE

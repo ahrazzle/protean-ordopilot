@@ -18,7 +18,7 @@ You send notes in plain words. Orda files each one, recalls the gist without dra
 
 ```sh
 git clone <repo-url>
-cd protean-ordapilot
+cd protean-ordopilot
 pip install -e .
 ```
 

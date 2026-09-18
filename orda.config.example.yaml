@@ -1,0 +1,20 @@
+# Explicit model config for Orda (all tiers opt-in; absent key = disabled).
+# Thresholds overridable ONLY here — never via environment.
+router:
+  provider: custom
+  model: router-small
+main:
+  provider: default
+  model: main-model
+# local:
+#   provider: custom
+#   model: local-tag
+# cheap:
+#   provider: openrouter
+#   model: cheap-tier-model
+# free:
+#   provider: openrouter
+#   model: blockrun/free
+free_tier_allowed: false
+timeout_s: 8.0
+confidence_floor: 0.65

@@ -38,8 +38,10 @@ def strip_markers(text):
             continue
         if SEPARATOR_ROW.match(line):
             continue
+        # Strip leading blockquote markers first so nested cases like
+        # "> # Title" or "> - item" expose the inner marker.
+        line = re.sub(r"^\s*(?:>\s?)+", "", line)  # blockquote arrows
         line = re.sub(r"^\s*#+\s*", "", line)      # heading hashes
-        line = re.sub(r"^\s*>\s?", "", line)       # blockquote arrow
         line = LIST_MARKER.sub("", line)           # list markers
         line = line.replace("|", " ")              # table pipes
         line = line.replace("`", "")               # inline code ticks

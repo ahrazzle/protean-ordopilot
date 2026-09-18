@@ -43,3 +43,14 @@ def test_strip_markers_removes_hashes_and_ticks():
     stripped = strip_markers("# Title\nUse `append_message` here.")
     assert "#" not in stripped
     assert "`" not in stripped
+
+
+def test_nested_blockquote_and_heading_order():
+    # Multiple blockquote markers and blockquote+heading/list ordering
+    # must not leave marker characters that affect counts.
+    assert strip_markers("> # Title") == "Title"
+    assert strip_markers("> > nested quote") == "nested quote"
+    assert strip_markers("> - Hello world.") == "Hello world."
+    # Word count through the combined markers must equal the plain count
+    assert count("> # Orda guide text here.")[0] == count("Orda guide text here.")[0]
+    assert count("> - Orda guide text here.")[0] == count("Orda guide text here.")[0]
